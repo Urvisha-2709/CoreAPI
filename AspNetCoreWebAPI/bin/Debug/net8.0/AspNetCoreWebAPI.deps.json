@@ -9,7 +9,6 @@
       "AspNetCoreWebAPI/1.0.0": {
         "dependencies": {
           "Microsoft.AspNetCore.OpenApi": "8.0.2",
-          "Microsoft.AspNetCore.Razor.Design": "2.2.0-preview3-35497",
           "Swashbuckle.AspNetCore": "6.4.0"
         },
         "runtime": {
@@ -27,7 +26,6 @@
           }
         }
       },
-      "Microsoft.AspNetCore.Razor.Design/2.2.0-preview3-35497": {},
       "Microsoft.Extensions.ApiDescription.Server/6.0.5": {},
       "Microsoft.OpenApi/1.4.3": {
         "runtime": {
@@ -89,13 +87,6 @@
       "sha512": "sha512-59xQBsH+2at3+rrLazCNbaLhS1gmMY2fT1rSxa116EQ2oCbdULerytaYtr0h5iew+BVwJZNsWgvU3fOpt74DCA==",
       "path": "microsoft.aspnetcore.openapi/8.0.2",
       "hashPath": "microsoft.aspnetcore.openapi.8.0.2.nupkg.sha512"
-    },
-    "Microsoft.AspNetCore.Razor.Design/2.2.0-preview3-35497": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-r9FknEpmBf9D+Gs/aODyVXNH9fp3a5NK677v009RcXlqgPv2cBDjQ5jjn6DWRkY3MI3cBog5fs9BMm9DoTePyg==",
-      "path": "microsoft.aspnetcore.razor.design/2.2.0-preview3-35497",
-      "hashPath": "microsoft.aspnetcore.razor.design.2.2.0-preview3-35497.nupkg.sha512"
     },
     "Microsoft.Extensions.ApiDescription.Server/6.0.5": {
       "type": "package",

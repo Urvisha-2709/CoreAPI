@@ -1,30 +1,44 @@
-using AspNetCoreWebAPI.Models;
-using AspNetCoreWebAPI.Services;
 using Microsoft.AspNetCore.Mvc;
+using AspNetCoreWebAPI.Services;
+using AspNetCoreWebAPI.Models;
+using System.Collections.Generic;
 
 namespace AspNetCoreWebAPI.Controllers
 {
-    [Route("api/[controller]")]
     [ApiController]
+    [Route("api/[controller]")]
     public class ProductController : ControllerBase
     {
-        ProductService _productService;
+        private readonly ProductService _productService;
+
         public ProductController(ProductService productService)
         {
-            this._productService = productService;
+            _productService = productService;
         }
 
         [HttpGet]
-        public ActionResult Get()
+        public IActionResult Get()
         {
-            return Ok(this._productService.GetProducts());
+            var products = _productService.GetProducts();
+            return Ok(products);
         }
 
         [HttpPost]
-        public ActionResult Post(Product product)
+        public IActionResult Post(Product product)
         {
-            this._productService.AddProduct(product);
+            _productService.AddProduct(product);
             return Ok();
+        }
+        
+        [HttpDelete("{id}")]
+        public IActionResult Delete(int id)
+        {
+            var DeletedProduct = _productService.DeleteProduct(id);
+            if (DeletedProduct == null)
+            {
+                return NotFound();
+            }
+            return Ok(DeletedProduct);
         }
     }
 }

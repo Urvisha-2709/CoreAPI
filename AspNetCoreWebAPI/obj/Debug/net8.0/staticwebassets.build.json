@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "wOCQRLKQ3UxQF5AcQBgXoYeBEq6/e8iFya3yfP48Jlw=",
+  "Source": "AspNetCoreWebAPI",
+  "BasePath": "_content/AspNetCoreWebAPI",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}

@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using AspNetCoreWebAPI.Models;
 
@@ -19,6 +20,11 @@ namespace AspNetCoreWebAPI.Services
         public void AddProduct(Product product)
         {
             _productList.Add(product);
+        }
+
+        public void DeleteProduct(Product product)
+        {
+        _productList.Remove(product);
         }
     }
 }
