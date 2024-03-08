@@ -10,6 +10,7 @@ namespace AspNetCoreWebAPI.Controllers
     public class ProductController : ControllerBase
     {
         private readonly ProductService _productService;
+    
 
         public ProductController(ProductService productService)
         {
@@ -29,16 +30,26 @@ namespace AspNetCoreWebAPI.Controllers
             _productService.AddProduct(product);
             return Ok();
         }
-        
+
         [HttpDelete("{id}")]
         public IActionResult Delete(int id)
         {
-            var DeletedProduct = _productService.DeleteProduct(id);
-            if (DeletedProduct == null)
+            _productService.DeleteProduct(id);
+
+            return Ok();
+        }
+
+        [HttpPut("{id}")]
+        public IActionResult Put(int id, [FromBody] Product product)
+        {
+            if (id != product.Id)
             {
-                return NotFound();
+                return BadRequest("Invalid id provided");
             }
-            return Ok(DeletedProduct);
+
+            _productService.UpdateProduct(product);
+
+            return Ok();
         }
     }
 }

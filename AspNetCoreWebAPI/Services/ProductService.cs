@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Security.Cryptography.X509Certificates;
 using AspNetCoreWebAPI.Models;
 
 namespace AspNetCoreWebAPI.Services
@@ -22,9 +23,13 @@ namespace AspNetCoreWebAPI.Services
             _productList.Add(product);
         }
 
-        public void DeleteProduct(Product product)
+        public void DeleteProduct(double id)
         {
-        _productList.Remove(product);
+        _productList.Remove();
+        }
+        public void UpdateProduct(Product product)
+        {
+        _productList.Add(product);
         }
     }
 }
