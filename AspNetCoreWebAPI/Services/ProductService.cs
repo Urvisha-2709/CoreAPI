@@ -8,6 +8,8 @@ namespace AspNetCoreWebAPI.Services
     public class ProductService
     {
         List<Product> _productList;
+        private Product productToRemove;
+
         public ProductService()
         {
             _productList = new List<Product>();
@@ -25,7 +27,7 @@ namespace AspNetCoreWebAPI.Services
 
         public void DeleteProduct(double id)
         {
-        _productList.Remove();
+        _productList.Remove(productToRemove);
         }
         public void UpdateProduct(Product product)
         {
