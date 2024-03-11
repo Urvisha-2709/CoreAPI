@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("AspNetCoreWebAPI")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+48f098b9027604aaac1c0795e6b67a107c8455cd")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+00f160dc6aa6a04898e87b10ab6fd174c1627188")]
 [assembly: System.Reflection.AssemblyProductAttribute("AspNetCoreWebAPI")]
 [assembly: System.Reflection.AssemblyTitleAttribute("AspNetCoreWebAPI")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

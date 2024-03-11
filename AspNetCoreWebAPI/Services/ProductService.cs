@@ -1,6 +1,6 @@
 using System;
 using System.Collections.Generic;
-using System.Security.Cryptography.X509Certificates;
+using System.Linq;
 using AspNetCoreWebAPI.Models;
 
 namespace AspNetCoreWebAPI.Services
@@ -8,7 +8,6 @@ namespace AspNetCoreWebAPI.Services
     public class ProductService
     {
         List<Product> _productList;
-        private Product productToRemove;
 
         public ProductService()
         {
@@ -27,11 +26,17 @@ namespace AspNetCoreWebAPI.Services
 
         public void DeleteProduct(double id)
         {
-        _productList.Remove(productToRemove);
+            Product productToRemove = _productList.FirstOrDefault(p => p.Id == id);
+            if (productToRemove != null)
+            {
+                _productList.Remove(productToRemove);
+            }
         }
+
         public void UpdateProduct(Product product)
         {
-        _productList.Add(product);
+            DeleteProduct(product.Id);
+            AddProduct(product);
         }
     }
 }
