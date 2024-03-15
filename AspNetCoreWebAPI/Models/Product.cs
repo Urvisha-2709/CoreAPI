@@ -1,3 +1,6 @@
+using Microsoft.Extensions.DependencyInjection;
+using AspNetCoreWebAPI.Services;
+
 namespace AspNetCoreWebAPI.Models
 {
     public class Product

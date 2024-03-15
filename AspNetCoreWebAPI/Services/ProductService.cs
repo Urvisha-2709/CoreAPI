@@ -1,42 +1,54 @@
 using System;
 using System.Collections.Generic;
+using System.Data;
+using System.Data.SqlClient; 
 using System.Linq;
+using Dapper;
 using AspNetCoreWebAPI.Models;
+using MySql.Data.MySqlClient;
+using Microsoft.Extensions.DependencyInjection;
+using AspNetCoreWebAPI.Services;
+using System.Configuration;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Options;
 
 namespace AspNetCoreWebAPI.Services
 {
     public class ProductService
     {
-        List<Product> _productList;
+    
+        private readonly IDbConnection _connection;
+        private object env;
 
-        public ProductService()
+        public IConfigurationRoot Configuration { get; }
+
+        public ProductService(IOptions<ConnectionString> connectionString)
         {
-            _productList = new List<Product>();
+            _connection = new MySqlConnection(connectionString.Value.ProjectConnection);
         }
 
         public List<Product> GetProducts()
         {
-            return _productList;
+            string query = "SELECT * FROM Products";
+            return _connection.Query<Product>(query).ToList();
         }
 
         public void AddProduct(Product product)
         {
-            _productList.Add(product);
+            string query = "INSERT INTO Products (Name, Price) VALUES (@Name, @Price)";
+            _connection.Execute(query, product);
         }
 
         public void DeleteProduct(double id)
         {
-            Product productToRemove = _productList.FirstOrDefault(p => p.Id == id);
-            if (productToRemove != null)
-            {
-                _productList.Remove(productToRemove);
-            }
+            string query = "DELETE FROM Products WHERE Id = @Id";
+            _connection.Execute(query, new { Id = id });
         }
 
         public void UpdateProduct(Product product)
         {
-            DeleteProduct(product.Id);
-            AddProduct(product);
+            string query = "UPDATE Products SET Name = @Name, Price = @Price WHERE Id = @Id";
+            _connection.Execute(query, product);
         }
     }
 }
