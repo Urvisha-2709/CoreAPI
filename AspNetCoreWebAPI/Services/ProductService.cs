@@ -1,26 +1,17 @@
 using System;
 using System.Collections.Generic;
 using System.Data;
-using System.Data.SqlClient; 
 using System.Linq;
 using Dapper;
 using AspNetCoreWebAPI.Models;
 using MySql.Data.MySqlClient;
-using Microsoft.Extensions.DependencyInjection;
-using AspNetCoreWebAPI.Services;
-using System.Configuration;
-using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Options;
 
 namespace AspNetCoreWebAPI.Services
 {
     public class ProductService
     {
-    
         private readonly IDbConnection _connection;
-        private object env;
-
-        public IConfigurationRoot Configuration { get; }
 
         public ProductService(IOptions<ConnectionString> connectionString)
         {
@@ -50,5 +41,13 @@ namespace AspNetCoreWebAPI.Services
             string query = "UPDATE Product SET Name = @Name, Price = @Price WHERE Id = @Id";
             _connection.Execute(query, product);
         }
+
+        public Product GetProductById(Int32 id)
+        {
+            string query = "SELECT * FROM Product WHERE Id = @Id";
+            return _connection.QueryFirstOrDefault<Product>(query, new { Id = id });
+        }
     }
 }
+
+    

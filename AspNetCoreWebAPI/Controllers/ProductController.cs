@@ -51,5 +51,17 @@ namespace AspNetCoreWebAPI.Controllers
 
             return Ok();
         }
+
+                [HttpGet("{id}")]
+        public IActionResult GetById(int id)
+        {
+            var product = _productService.GetProductById(id);
+            if (product == null)
+            {
+                return NotFound();
+            }
+            return Ok(product);
+        }
+
     }
 }
