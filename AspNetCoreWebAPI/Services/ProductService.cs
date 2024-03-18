@@ -29,25 +29,25 @@ namespace AspNetCoreWebAPI.Services
 
         public List<Product> GetProducts()
         {
-            string query = "SELECT * FROM Products";
+            string query = "SELECT * FROM Product";
             return _connection.Query<Product>(query).ToList();
         }
 
         public void AddProduct(Product product)
         {
-            string query = "INSERT INTO Products (Name, Price) VALUES (@Name, @Price)";
+            string query = "INSERT INTO Product (Name, Price) VALUES (@Name, @Price)";
             _connection.Execute(query, product);
         }
 
-        public void DeleteProduct(double id)
+        public void DeleteProduct(Int32 id)
         {
-            string query = "DELETE FROM Products WHERE Id = @Id";
+            string query = "DELETE FROM Product WHERE Id = @Id";
             _connection.Execute(query, new { Id = id });
         }
 
         public void UpdateProduct(Product product)
         {
-            string query = "UPDATE Products SET Name = @Name, Price = @Price WHERE Id = @Id";
+            string query = "UPDATE Product SET Name = @Name, Price = @Price WHERE Id = @Id";
             _connection.Execute(query, product);
         }
     }
